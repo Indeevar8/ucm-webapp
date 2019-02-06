@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>UCM PAGE</title>
+</head>
+
+<body>
+	<h1>Home Page</h1>
+	<form th:action="@{/evaluator}" th:object="${evaluator}" method="post">
+		<label>Enter Numbers:</label> 
+		<input type="text" th:field="*{number}" />
+		<button type="submit">compute</button>
+	</form>
+</body>
+</html>

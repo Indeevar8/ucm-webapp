@@ -1,23 +1,38 @@
-package edu.ucm;
+package edu.ucm.model;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import org.apache.commons.lang.builder.ToStringBuilder;
+
+@Entity
+@Table(name = "Faculty")
 public class Faculty {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+
 	private String firstName;
 	private String lastName;
 	private String email;
-	private long mobileNumber;
+	private String mobileNumber;
 	private String specialization;
 
-	public Faculty() {
+	@OneToOne(mappedBy = "faculty", fetch = FetchType.LAZY)
+	private Scheduler scheduler;
 
+	public long getId() {
+		return id;
 	}
 
-	public Faculty(String firstName, String lastName, String email, long mobileNumber, String specialization) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.mobileNumber = mobileNumber;
-		this.specialization = specialization;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -44,11 +59,11 @@ public class Faculty {
 		this.email = email;
 	}
 
-	public long getMobileNumber() {
+	public String getMobileNumber() {
 		return mobileNumber;
 	}
 
-	public void setMobileNumber(long mobileNumber) {
+	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
 
@@ -62,8 +77,7 @@ public class Faculty {
 
 	@Override
 	public String toString() {
-		return "Faculty [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", mobileNumber="
-				+ mobileNumber + ", specialization=" + specialization + "]";
+		return ToStringBuilder.reflectionToString(this);
 	}
 
 }

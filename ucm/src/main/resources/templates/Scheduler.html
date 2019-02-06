@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Scheduler</title>
+</head>
+<body>
+	<form method="post" action="/display">
+		<h1>Scheduler Page</h1>
+		<h1 th:text="${message}"></h1>
+
+		<div>
+			<h1>values in list</h1>
+			<h1 th:text="${number}"></h1>
+			<h1>Even Numbers</h1>
+			<h1 th:text="${even}"></h1>
+			<h1>Odd Numbers</h1>
+			<h1 th:text="${odd}"></h1>
+		</div>
+		<button type="submit">Submit</button>
+
+	</form>
+<a th:href="@{/}">Home</a>
+
+</body>
+</html>
